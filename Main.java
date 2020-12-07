@@ -22,6 +22,15 @@ public class Main {
 //        int array2[] = { 12, 34, 34, 5, 5 };
 //        System.out.println(Arrays.toString(deleteAllDuplicates(array2)));
 
+//        String text = "kajak";
+//        System.out.println(isPalindrom(text));
+
+//        String text = "aaaaaaaaaaaaaa";
+//        System.out.println(vowels(text));
+
+//        System.out.println(factorial(20));
+
+        System.out.println(nFibonacci(7));
 
 
     }
@@ -39,6 +48,7 @@ public class Main {
         inputSet.toArray(outPut);
         return outPut[outPut.length - 2];
     }
+
     public static int secondValueHashMap(HashMap<Integer, String> map) throws Exception {
         if (map == null){
             throw new Exception();
@@ -49,6 +59,7 @@ public class Main {
         }
         return (int) sortedMap.keySet().toArray()[sortedMap.size() - 2];
     }
+
     public static int[] deleteAllDuplicates(int[] input) throws Exception {
         if (input == null) {
             throw new Exception();
@@ -57,6 +68,7 @@ public class Main {
         for (int i : input) {
             setList.add(i);
         }
+
         int[] output = new int[setList.size()];
         int k = 0;
         for (Integer i : setList) {
@@ -65,12 +77,55 @@ public class Main {
         }
         return output;
     }
+
     public static boolean isPalindrom (String text) {
         String reversedWord = new StringBuilder(text).reverse().toString();
-return reversedWord.equals(text)
+        return reversedWord.equals(text);
 
     }
 
+    public static boolean isAnagram (String text1, String text2) {
+        return text1.length() == text2.length();
+    }
 
+    public static int vowels (String text){
+        char[] chars = text.toCharArray();
+        int count = 0;
+        for (char i : chars) {
+            if (i == 'a' || i == 'e' || i == 'i' || i == 'o' || i == 'u' || i == 'y') {
+                count++;
+            }
+        }
+        return count;
+    }
 
+    public static long factorial (int input) throws Exception{
+        if (input <= 0) {
+            throw new Exception();
+        }
+        long output = 1;
+        for (int i = 1; i <= input; i++) {
+            output *= i;
+        }
+        return output;
+    }
+
+    public static int nFibonacci (int input) throws Exception{
+        if (input < 0) {
+            throw new Exception();
+        }
+        if (input == 0 || input == 1) {
+            return 1;
+        } else {
+            int n1 = 0; //for 0
+            int n2 = 1; //for 1 - Fibonacci number
+            int output = 0;
+            for (int i = 2; i <= input; i++) {
+                output = n1 + n2;
+                n1 = n2;
+                n2 = output;
+            }
+            return output;
+        }
+    }
 }
